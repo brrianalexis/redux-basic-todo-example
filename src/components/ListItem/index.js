@@ -12,8 +12,8 @@ class ListItem extends Component {
     return (
       <>
         {this.props.tasks.map(task => (
-          <div style={{ display: 'flex' }}>
-            <li key={task.id}>{task.description}</li>
+          <div style={{ display: 'flex' }} key={task.id}>
+            <li>{task.description}</li>
             <button
               style={{ marginLeft: '1rem' }}
               onClick={() => this.handleRemove(task.id)}
