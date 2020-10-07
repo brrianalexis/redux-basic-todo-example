@@ -3,18 +3,15 @@ import { connect } from 'react-redux';
 import { addTask } from '../../redux/store';
 
 class Button extends Component {
-  handleSubmit(description) {
+  handleSubmit() {
     const { dispatch } = this.props;
-    dispatch(addTask(description));
+    dispatch(addTask());
   }
 
   render() {
     return (
       <button
-        onClick={() =>
-          this.props.inputValue.length >= 2 &&
-          this.handleSubmit(this.props.inputValue)
-        }
+        onClick={() => this.props.inputValue.length >= 2 && this.handleSubmit()}
       >
         <span role="img" aria-label="plus sign">
           ➕

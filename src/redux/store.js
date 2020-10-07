@@ -16,10 +16,9 @@ export const reducer = (state = initialState, action) => {
         input: action.inputValue,
       };
     case 'ADD_TASK':
-      console.log(action.task);
       return {
         ...state,
-        tasks: [...state.tasks, action.task],
+        tasks: [...state.tasks, { description: state.input, id: uuidv4() }],
         input: '',
       };
     case 'REMOVE_TASK':
@@ -39,13 +38,9 @@ export const editInput = value => dispatch => {
   });
 };
 
-export const addTask = description => dispatch => {
+export const addTask = () => dispatch => {
   return dispatch({
     type: 'ADD_TASK',
-    task: {
-      description,
-      id: uuidv4(),
-    },
   });
 };
 
