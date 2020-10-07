@@ -10,7 +10,12 @@ class Button extends Component {
 
   render() {
     return (
-      <button onClick={() => this.handleSubmit(this.props.inputValue)}>
+      <button
+        onClick={() =>
+          this.props.inputValue.length >= 2 &&
+          this.handleSubmit(this.props.inputValue)
+        }
+      >
         <span role="img" aria-label="plus sign">
           ➕
         </span>
