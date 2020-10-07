@@ -11,10 +11,10 @@ class Button extends Component {
   render() {
     return (
       <button onClick={() => this.handleSubmit(this.props.inputValue)}>
-        <span role="img" aria-label="plus sign emoji">
+        <span role="img" aria-label="plus sign">
           ➕
         </span>
-        Add task
+        Add todo
       </button>
     );
   }
