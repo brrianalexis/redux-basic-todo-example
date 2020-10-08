@@ -1,31 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../redux/store';
 
-class Button extends Component {
-  handleSubmit() {
-    const { dispatch } = this.props;
+const Button = () => {
+  const dispatch = useDispatch();
+  const inputValue = useSelector(state => state.input);
+
+  const handleSubmit = () => {
     dispatch(addTask());
-  }
-
-  render() {
-    return (
-      <button
-        onClick={() => this.props.inputValue.length >= 2 && this.handleSubmit()}
-      >
-        <span role="img" aria-label="plus sign">
-          ➕
-        </span>
-        Add todo
-      </button>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  return {
-    inputValue: state.input,
   };
-}
 
-export default connect(mapStateToProps)(Button);
+  return (
+    <button onClick={() => inputValue.length >= 2 && handleSubmit()}>
+      <span role="img" aria-label="plus sign">
+        ➕
+      </span>
+      Add todo
+    </button>
+  );
+};
+
+export default Button;

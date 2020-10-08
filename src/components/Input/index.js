@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { editInput } from '../../redux/store';
 
-class Input extends Component {
-  handleChange(value) {
-    const { dispatch } = this.props;
+const Input = () => {
+  const dispatch = useDispatch();
+  const inputValue = useSelector(state => state.input);
+
+  const handleChange = value => {
     dispatch(editInput(value));
-  }
-
-  render() {
-    return (
-      <input
-        type="text"
-        value={this.props.inputValue}
-        onChange={e => this.handleChange(e.target.value)}
-      />
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  return {
-    inputValue: state.input,
   };
-}
 
-export default connect(mapStateToProps)(Input);
+  return (
+    <input
+      type="text"
+      value={inputValue}
+      onChange={e => handleChange(e.target.value)}
+    />
+  );
+};
+
+export default Input;
